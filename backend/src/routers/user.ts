@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 export const userRouter = router({
     login: publicProcedure
         .input(z.object({ username: z.string(), password: z.string() }))
-        .mutation(async ({ input, ctx }) => {
+        .mutation(async ({ input }) => {
             const user = await prisma.user.findUnique({
                 where: {
                     username: input.username
@@ -33,7 +33,7 @@ export const userRouter = router({
 
     signup: publicProcedure
         .input(z.object({ username: z.string(), password: z.string() }))
-        .mutation(async ({ input, ctx }) => {
+        .mutation(async ({ input }) => {
 
             const salt = await genSalt();
             const hashedPassword = await hash(input.password, salt);

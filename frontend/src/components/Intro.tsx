@@ -1,11 +1,11 @@
 import { Button } from "./ui/button"
 import { motion } from "framer-motion"
 import { Skeleton } from "@/components/ui/skeleton"
-import { useLocation } from "react-router-dom"
+
 import { useNavigate } from "react-router-dom"
 
 const Intro = () => {
-    const location = useLocation();
+    
     const navigate = useNavigate();
 
     return (

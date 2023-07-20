@@ -8,13 +8,13 @@ import {
 import Root from "./components/Root";
 import Home from "./components/Home";
 import Intro from "./components/Intro";
-import { useEffect } from "react";
+
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Protected from "./components/Protected";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { trpc } from "./utils/trpc";
 import Note from "./components/Note";
 import Destruct from "./components/Destruct";

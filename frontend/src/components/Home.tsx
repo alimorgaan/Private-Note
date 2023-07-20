@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "./ui/skeleton";
+
 import { motion } from "framer-motion";
 import { trpc } from "@/utils/trpc";
 import {
@@ -24,7 +24,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -32,7 +31,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Label } from "./ui/label";
+
 import { Input } from "./ui/input";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";

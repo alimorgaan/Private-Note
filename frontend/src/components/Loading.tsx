@@ -3,7 +3,7 @@ import { Skeleton } from "./ui/skeleton";
 const Loading = (props: { size: number }) => {
   return (
     <>
-      {[...Array(props.size)].map((_, i) => (
+      {[...Array(props.size)].map((_) => (
         <div className="flex items-center space-x-4 mr-5 mb-5">
           <Skeleton className="h-12 w-12 rounded-full" />
           <div className="space-y-2">
