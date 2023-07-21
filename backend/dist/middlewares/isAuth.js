@@ -19,3 +19,4 @@ exports.isAuth = (0, trpc_js_1.middleware)(async (opts) => {
         });
     }
 });
+//# sourceMappingURL=isAuth.js.map

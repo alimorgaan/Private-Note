@@ -60,3 +60,4 @@ exports.userRouter = (0, trpc_1.router)({
         return token;
     })
 });
+//# sourceMappingURL=user.js.map

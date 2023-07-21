@@ -10,3 +10,4 @@ exports.appRouter = (0, trpc_1.router)({
     user: user_1.userRouter,
     note: note_1.noteRouter
 });
+//# sourceMappingURL=index.js.map

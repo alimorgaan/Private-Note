@@ -27,3 +27,4 @@ app.listen(process.env.PORT, () => {
     console.log(`Example app listening on port ${process.env.PORT}!`);
 });
 exports.default = app; // for vercel serverless functions
+//# sourceMappingURL=index.js.map

@@ -8,3 +8,4 @@ exports.helloRouter = (0, trpc_1.router)({
         return "Hello World";
     })
 });
+//# sourceMappingURL=hello.js.map
