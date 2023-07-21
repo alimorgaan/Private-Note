@@ -53,7 +53,7 @@ const Signup = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="  w-[400px]">
+        <div className="w-[250px] md:w-[400px] lg:w-[400px]">
           <h1 className="text-center text-6xl font-bold tracking-tighter">
             Signup
           </h1>

@@ -1,4 +1,3 @@
-
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,10 +6,8 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  
   FormField,
   FormItem,
-  
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -55,7 +52,7 @@ const Login = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="  w-[400px]">
+        <div className="w-[250px] md:w-[400px] lg:w-[400px]">
           <h1 className="text-center text-6xl font-bold tracking-tighter">
             Login
           </h1>
