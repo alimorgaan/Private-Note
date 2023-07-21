@@ -28,10 +28,8 @@ app.use("/panel", (_, res) => {
 });
 */
 
-app.get("/helloWorld !", (_, res) => {
-    return res.send(
-        "Hello World !"
-    );
+app.get("/helloWorld", (req, res) => {
+     res.json({ message: "Hello World" });
 });
 
 
