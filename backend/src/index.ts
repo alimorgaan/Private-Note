@@ -3,7 +3,7 @@ import { appRouter } from './routers';
 import cors from 'cors';
 import express from 'express';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
-import { renderTrpcPanel } from "trpc-panel";
+//import { renderTrpcPanel } from "trpc-panel";
 import { createContext } from './trpc';
 import 'dotenv/config';
 
@@ -20,12 +20,13 @@ app.use('/trpc', createExpressMiddleware({
 }));
 
 // for testing api in browser
+/*
 app.use("/panel", (_, res) => {
     return res.send(
         renderTrpcPanel(appRouter, { url: `http://localhost:${process.env.PORT}/trpc` })
     );
 });
-
+*/
 
 app.get("/helloWorld !", (_, res) => {
     return res.send(

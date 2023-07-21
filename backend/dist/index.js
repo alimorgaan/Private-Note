@@ -7,7 +7,7 @@ const routers_1 = require("./routers");
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const express_2 = require("@trpc/server/adapters/express");
-const trpc_panel_1 = require("trpc-panel");
+//import { renderTrpcPanel } from "trpc-panel";
 const trpc_1 = require("./trpc");
 require("dotenv/config");
 const app = (0, express_1.default)();
@@ -17,9 +17,13 @@ app.use('/trpc', (0, express_2.createExpressMiddleware)({
     createContext: trpc_1.createContext,
 }));
 // for testing api in browser
+/*
 app.use("/panel", (_, res) => {
-    return res.send((0, trpc_panel_1.renderTrpcPanel)(routers_1.appRouter, { url: `http://localhost:${process.env.PORT}/trpc` }));
+    return res.send(
+        renderTrpcPanel(appRouter, { url: `http://localhost:${process.env.PORT}/trpc` })
+    );
 });
+*/
 app.get("/helloWorld !", (_, res) => {
     return res.send("Hello World !");
 });
