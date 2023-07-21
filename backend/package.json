@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.ts",
     "start": "node ./dist/index.js",
-    "build": "tsc"
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
   "author": "Ali Morgan",
   "license": "ISC",
@@ -26,11 +28,18 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.1",
     "nodemon": "^3.0.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.1",
     "trpc-panel": "^1.3.4",
     "ts-node": "^10.9.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "prisma": "^5.0.0"
-  }
+  }, 
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+]
 }
