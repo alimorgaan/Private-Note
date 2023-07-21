@@ -103,7 +103,7 @@ const Home = () => {
                   <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="shadcn" {...field} />
+                      <Input placeholder="title" {...field} />
                     </FormControl>
                     <FormDescription>This is your note title.</FormDescription>
                     <FormMessage />
@@ -118,7 +118,7 @@ const Home = () => {
                   <FormItem>
                     <FormLabel>Content</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="shadcn" {...field} />
+                      <Textarea placeholder="content" {...field} />
                     </FormControl>
                     <FormDescription>
                       This is your note content.

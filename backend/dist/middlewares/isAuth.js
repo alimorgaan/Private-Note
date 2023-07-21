@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isAuth = void 0;
 const server_1 = require("@trpc/server");
-const trpc_js_1 = require("../trpc.js");
-exports.isAuth = (0, trpc_js_1.middleware)(async (opts) => {
+const trpc_1 = require("../trpc");
+exports.isAuth = (0, trpc_1.middleware)(async (opts) => {
     const { ctx } = opts;
     if (!ctx.user) {
         throw new server_1.TRPCError({

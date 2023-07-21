@@ -42,6 +42,18 @@ const Destruct = () => {
     );
   }
 
+  if (isNoteRead.error) {
+    return (
+      <div className="sm:container sm:mx-auto flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center py-20">
+          <h1 className="text-center text-5xl font-bold tracking-tighter leading-normal">
+            {isNoteRead.error.message}
+          </h1>
+        </div>
+      </div>
+    );
+  }
+
   if (isNoteRead.data) {
     return (
       <div className="sm:container sm:mx-auto flex items-center justify-center">

@@ -1,20 +1,11 @@
-
-import { Outlet } from "react-router-dom"
-
+import { Outlet } from "react-router-dom";
 import Intro from "./Intro";
-
+import { useContext } from "react";
+import AuthContext from "../contexts/AuthContext";
 const Protected = () => {
+  const auth = useContext(AuthContext);
 
-    const token = localStorage.getItem('token');
+  return auth.isLoggedIn ? <Outlet /> : <Intro />;
+};
 
-    return (
-
-        token ? <Outlet /> : <Intro />
-
-    )
-
-
-}
-
-
-export default Protected
+export default Protected;

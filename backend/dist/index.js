@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const routers_1 = require("./routers");
+const index_1 = require("./routers/index");
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const express_2 = require("@trpc/server/adapters/express");
@@ -13,7 +13,7 @@ require("dotenv/config");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use('/trpc', (0, express_2.createExpressMiddleware)({
-    router: routers_1.appRouter,
+    router: index_1.appRouter,
     createContext: trpc_1.createContext,
 }));
 // for testing api in browser

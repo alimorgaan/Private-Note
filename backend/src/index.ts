@@ -1,5 +1,5 @@
 
-import { appRouter } from './routers';
+import { appRouter } from './routers/index';
 import cors from 'cors';
 import express from 'express';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
