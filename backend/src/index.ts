@@ -32,4 +32,4 @@ app.listen(process.env.PORT, () => {
 });
 
 export type AppRouter = typeof appRouter;
-
+export default app ; // for vercel serverless functions
