@@ -10,7 +10,7 @@
     "build": "rimraf dist && npx prisma generate && tsc",
     "ts.check": "tsc --project tsconfig.json",
     "add-build": "git add dist", 
-    "vercel-build": "echo hello && npm run build"
+    "vercel-build": "echo hello && npm install && npm run build"
   },
   "author": "Ali Morgan",
   "license": "ISC",
