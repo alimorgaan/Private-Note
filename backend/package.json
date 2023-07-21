@@ -8,8 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/index.ts",
     "start": "node ./dist/index.js",
-    "build": "tsc", 
-    "vercel-build": "tsc && echo hello"
+    "build": "tsc"
   },
   "author": "Ali Morgan",
   "license": "ISC",
