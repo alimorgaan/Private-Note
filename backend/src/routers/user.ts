@@ -44,11 +44,6 @@ export const userRouter = router({
                         password: hashedPassword
                     }
                 })
-                if (!newUser) throw new TRPCError({
-                    message: "something went wrong",
-                    code: "INTERNAL_SERVER_ERROR"
-                });
-    
                 const payload = {
                     username: newUser.username
                 }

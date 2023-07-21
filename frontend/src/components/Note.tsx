@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
@@ -19,10 +19,21 @@ import { useState } from "react";
 import { Loader2, Terminal } from "lucide-react";
 
 const Note = () => {
-  const noteData = useLocation().state.note;
+  const [noteData, setNoteData] = useState(useLocation().state);
+  const noteId = useParams().id || "";
   const navigate = useNavigate();
   const [isCopied, setIsCopied] = useState(false);
   const noteDeleteMutation = trpc.note.deleteNote.useMutation();
+
+  const getNoteDataQuery = trpc.note.getUserNote.useQuery(
+    { noteId },
+    {
+      enabled: noteData ? false : true,
+      onSuccess: (data) => {
+        setNoteData(data);
+      },
+    }
+  );
 
   //todo : if user not coming from home fetch note data from the server
 
@@ -36,8 +47,15 @@ const Note = () => {
       }
     );
   };
-
+  if (!noteData) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader2 className="animate-spin mr-2 h-4 w-4" />
+      </div>
+    );
+  }
   console.log(noteData);
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 1 }}

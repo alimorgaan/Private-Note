@@ -169,7 +169,11 @@ const Home = () => {
                   onClick={() => {
                     navigate(`/user/note/${note.id}`, {
                       state: {
-                        note,
+                        id: note.id,
+                        title: note.title,
+                        content: note.content,
+                        read: note.read,
+                        createdAt: note.createdAt,
                       },
                     });
                   }}

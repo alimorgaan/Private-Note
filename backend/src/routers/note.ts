@@ -42,6 +42,26 @@ export const noteRouter = router({
             return notes;
         }),
 
+    getUserNote: protectedProcedure
+        .input(z.object({ noteId: z.string() }))
+        .query(async ({ input, ctx }) => {
+            try{
+                const note = await prisma.note.findUnique({
+                    where: {
+                        id: input.noteId ,
+                        username : ctx.user.username
+                    }
+                });
+
+                return note;
+            }catch(error){
+                throw new TRPCError({
+                    code: 'UNAUTHORIZED',
+                    message: 'NO ACCESS TO THIS NOTE'
+                });
+            }
+        }) , 
+
     
     isNoteRead : publicProcedure.input(z.object({noteId: z.string()})).query(async ({input}) => {
         const note = await prisma.note.findUnique({
