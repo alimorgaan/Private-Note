@@ -10,6 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
+import { Loader2 } from "lucide-react";
 const Destruct = () => {
   const id = useParams().id || "";
   const getNoteMutation = trpc.note.getNote.useMutation();
@@ -82,8 +83,16 @@ const Destruct = () => {
                 className=" text-xl  mt-10"
                 size="lg"
                 onClick={handleReadNote}
+                disabled={getNoteMutation.isLoading}
               >
-                Read The Note
+                {getNoteMutation.isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    <>Please wait</>
+                  </>
+                ) : (
+                  <>Read the note</>
+                )}
               </Button>
             </div>
           </>

@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
+import { ThemeContext } from "@/ThemeProvider";
+import { Moon, Sun } from "lucide-react";
 
 const Root = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     const navButton = document.getElementById("navButton");
@@ -22,7 +25,7 @@ const Root = () => {
 
   return (
     <>
-      <nav className="dark border-b bg-background/95 backdrop-blur">
+      <nav className="border-b bg-background/95 backdrop-blur">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center">
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
@@ -96,6 +99,9 @@ const Root = () => {
                   </li>
                 </>
               )}
+              <Button variant="outline" onClick={toggleTheme}>
+                {theme === "light" ? <Moon /> : <Sun />}
+              </Button>
             </ul>
           </div>
         </div>

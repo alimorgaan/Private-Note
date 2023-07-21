@@ -9,7 +9,7 @@ const Intro = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
+      initial={{ opacity: 0, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
@@ -38,22 +38,6 @@ const Intro = () => {
           >
             Signup
           </Button>
-        </div>
-      </div>
-      <div className="container flex flex-row flex-wrap">
-        <div className="flex items-center space-x-4 mr-5 mb-5">
-          <Skeleton className="h-12 w-12 rounded-full" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[250px]" />
-            <Skeleton className="h-4 w-[200px]" />
-          </div>
-        </div>
-        <div className="flex items-center space-x-4 mr-5 mb-5">
-          <Skeleton className="h-12 w-12 rounded-full" />
-          <div className="space-y-2">
-            <Skeleton className="h-4 w-[250px]" />
-            <Skeleton className="h-4 w-[200px]" />
-          </div>
         </div>
       </div>
     </motion.div>

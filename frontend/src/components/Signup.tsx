@@ -17,6 +17,7 @@ import AuthContext from "@/contexts/AuthContext";
 import { trpc } from "@/utils/trpc";
 import { useNavigate } from "react-router-dom";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   username: z.string().min(2).max(50),
@@ -49,7 +50,7 @@ const Signup = () => {
   return (
     <div className="sm:container sm:mx-auto flex items-center justify-center m-20">
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
@@ -103,8 +104,19 @@ const Signup = () => {
                 By clicking Submit, you agree to keep private notes a frindly
                 and safe place for everyone.
               </FormDescription>
-              <Button type="submit" className=" w-full">
-                Signup
+              <Button
+                type="submit"
+                className=" w-full"
+                disabled={tokenCreator.isLoading}
+              >
+                {tokenCreator.isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    <>Please wait</>
+                  </>
+                ) : (
+                  <>Signup</>
+                )}
               </Button>
             </form>
           </Form>

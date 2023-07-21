@@ -37,24 +37,33 @@ export const userRouter = router({
 
             const salt = await genSalt();
             const hashedPassword = await hash(input.password, salt);
-
-            const newUser = await prisma.user.create({
-                data: {
-                    username: input.username,
-                    password: hashedPassword
+            try {
+                const newUser = await prisma.user.create({
+                    data: {
+                        username: input.username,
+                        password: hashedPassword
+                    }
+                })
+                if (!newUser) throw new TRPCError({
+                    message: "something went wrong",
+                    code: "INTERNAL_SERVER_ERROR"
+                });
+    
+                const payload = {
+                    username: newUser.username
                 }
-            })
+                const token = jwt.sign(payload, process.env.SECRET_KEY as string);
+                return token;
 
-            if (!newUser) throw new TRPCError({
-                message: "something went wrong",
-                code: "INTERNAL_SERVER_ERROR"
-            });
-
-            const payload = {
-                username: newUser.username
+            }catch(error){
+                throw new TRPCError({
+                    message: "username already used try another one :)",
+                    code: "BAD_REQUEST"
+                });
             }
-            const token = jwt.sign(payload, process.env.SECRET_KEY as string);
-            return token;
+            
+
+            
 
         })
 }); 

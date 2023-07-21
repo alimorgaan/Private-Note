@@ -16,7 +16,7 @@ import { motion } from "framer-motion";
 import { trpc } from "@/utils/trpc";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useState } from "react";
-import { Terminal } from "lucide-react";
+import { Loader2, Terminal } from "lucide-react";
 
 const Note = () => {
   const noteData = useLocation().state.note;
@@ -74,8 +74,16 @@ const Note = () => {
                 className="m-3"
                 variant="destructive"
                 onClick={handleDelete}
+                disabled={noteDeleteMutation.isLoading}
               >
-                Delete
+                {noteDeleteMutation.isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    <>Please wait</>
+                  </>
+                ) : (
+                  <>Delete</>
+                )}
               </Button>
               {noteData.read ? (
                 <></>

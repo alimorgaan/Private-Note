@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -48,7 +49,7 @@ const Login = () => {
   return (
     <div className="sm:container sm:mx-auto flex items-center justify-center m-20">
       <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
+        initial={{ opacity: 0, scale: 1 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
       >
@@ -103,7 +104,14 @@ const Login = () => {
                 disabled={tokenCreator.isLoading}
                 className=" w-full"
               >
-                Login
+                {tokenCreator.isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    <>Please wait</>
+                  </>
+                ) : (
+                  <>Login</>
+                )}
               </Button>
             </form>
           </Form>

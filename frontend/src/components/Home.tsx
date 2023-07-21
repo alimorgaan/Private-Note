@@ -39,6 +39,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Textarea } from "./ui/textarea";
 import Loading from "./Loading";
+import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   title: z.string().min(2).max(50),
@@ -62,6 +63,7 @@ const Home = () => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     newNoteMutation.mutate(values, {
       onSuccess: () => {
+        form.reset();
         setNewNoteFormOpen(false);
         notesQuery.refetch();
       },
@@ -132,7 +134,14 @@ const Home = () => {
                 disabled={newNoteMutation.isLoading}
                 className="w-full"
               >
-                Submit
+                {newNoteMutation.isLoading ? (
+                  <>
+                    <Loader2 className="animate-spin mr-2 h-4 w-4" />
+                    <>Please wait</>
+                  </>
+                ) : (
+                  <>Submit</>
+                )}
               </Button>
             </form>
           </Form>
