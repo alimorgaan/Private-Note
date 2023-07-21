@@ -19,6 +19,7 @@ import { trpc } from "./utils/trpc";
 import Note from "./components/Note";
 import Destruct from "./components/Destruct";
 import AuthContext from "./contexts/AuthContext";
+import PublicOnly from "./components/PublicOnly";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -45,7 +46,9 @@ function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<Root />}>
-        <Route index path="/" element={<Intro />} />
+        <Route element={<PublicOnly />}>
+          <Route index path="/" element={<Intro />} />
+        </Route>
         <Route element={<Protected />}>
           <Route path="home" element={<Home />} />
         </Route>
