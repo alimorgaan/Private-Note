@@ -25,7 +25,7 @@ const Note = () => {
   const [isCopied, setIsCopied] = useState(false);
   const noteDeleteMutation = trpc.note.deleteNote.useMutation();
 
-  const getNoteDataQuery = trpc.note.getUserNote.useQuery(
+  trpc.note.getUserNote.useQuery(
     { noteId },
     {
       enabled: noteData ? false : true,
@@ -47,6 +47,7 @@ const Note = () => {
       }
     );
   };
+
   if (!noteData) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -54,7 +55,6 @@ const Note = () => {
       </div>
     );
   }
-  console.log(noteData);
 
   return (
     <motion.div
