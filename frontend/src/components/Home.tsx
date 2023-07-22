@@ -182,9 +182,11 @@ const Home = () => {
                     <CardTitle>{note.title}</CardTitle>
                     <CardDescription>
                       {note.read ? (
-                        <Badge variant="destructive">read</Badge>
+                        <Badge variant="destructive" className=" mt-3">
+                          read
+                        </Badge>
                       ) : (
-                        <Badge>unread</Badge>
+                        <Badge className=" mt-3">unread</Badge>
                       )}
                     </CardDescription>
                   </CardHeader>

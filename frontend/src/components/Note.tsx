@@ -77,9 +77,11 @@ const Note = () => {
             <CardTitle>{noteData.title}</CardTitle>
             <CardDescription>
               {noteData.read ? (
-                <Badge variant="destructive">read</Badge>
+                <Badge variant="destructive" className=" mt-3">
+                  read
+                </Badge>
               ) : (
-                <Badge>unread</Badge>
+                <Badge className=" mt-3">unread</Badge>
               )}
             </CardDescription>
           </CardHeader>
@@ -130,7 +132,7 @@ const Note = () => {
           <Alert className="  w-fit text-left">
             <Terminal className="h-4 w-4" />
             <AlertTitle>Link Copied!</AlertTitle>
-            <AlertDescription>You can send it to anyone to.</AlertDescription>
+            <AlertDescription>You can send it to anyone.</AlertDescription>
           </Alert>
         ) : (
           <></>

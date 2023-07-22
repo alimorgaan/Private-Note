@@ -14,6 +14,7 @@ import { Loader2 } from "lucide-react";
 const Destruct = () => {
   const id = useParams().id || "";
   const getNoteMutation = trpc.note.getNote.useMutation();
+
   const isNoteRead = trpc.note.isNoteRead.useQuery(
     { noteId: id },
     {
