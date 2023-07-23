@@ -11,8 +11,8 @@ const protectedProcedure = publicProcedure.use(isAuth);
 export const noteRouter = router({
     createNote: protectedProcedure
         .input(z.object({
-            title: z.string(),
-            content: z.string()
+            title: z.string().min(2).max(100),
+            content: z.string().min(2).max(500)
         })).mutation(async ({ input, ctx }) => {
             const newNote = await prisma.note.create({
                 data: {

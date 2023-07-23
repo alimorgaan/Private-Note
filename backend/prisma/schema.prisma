@@ -12,16 +12,16 @@ datasource db {
 }
 
 model User {
-  username String  @id @unique
+  username String  @id @unique @db.VarChar(100)
   bio      String?
-  password String
+  password String  @db.VarChar(100)
   notes    Note[]
 }
 
 model Note {
   id        String   @id @default(cuid())
-  title     String
-  content   String
+  title     String   @db.VarChar(100)
+  content   String   @db.VarChar(500)
   reply     String   @default("")
   read      Boolean  @default(false)
   createdAt DateTime @default(now())

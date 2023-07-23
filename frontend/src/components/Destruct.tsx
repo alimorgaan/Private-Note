@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "./ui/badge";
 import { Loader2 } from "lucide-react";
+import { getQueryKey } from "@trpc/react-query";
 const Destruct = () => {
   const id = useParams().id || "";
   const getNoteMutation = trpc.note.getNote.useMutation();
-
   const isNoteRead = trpc.note.isNoteRead.useQuery(
     { noteId: id },
     {
@@ -23,6 +23,7 @@ const Destruct = () => {
     }
   );
 
+  console.log(getQueryKey(trpc.note));
   const handleReadNote = () => {
     getNoteMutation.mutate(
       { noteId: id },

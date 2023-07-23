@@ -29,6 +29,18 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 
@@ -42,7 +54,7 @@ import Loading from "./Loading";
 import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
-  title: z.string().min(2).max(50),
+  title: z.string().min(2).max(100),
   content: z.string().min(2).max(500),
 });
 
@@ -50,6 +62,7 @@ const Home = () => {
   const notesQuery = trpc.note.getUserNotes.useQuery();
   const navigate = useNavigate();
   const [newNoteFormOpen, setNewNoteFormOpen] = useState<boolean>(false);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
   const newNoteMutation = trpc.note.createNote.useMutation();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -62,7 +75,11 @@ const Home = () => {
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     newNoteMutation.mutate(values, {
-      onSuccess: () => {
+      onSuccess: (data) => {
+        navigator.clipboard.writeText(
+          `${import.meta.env.VITE_FRONTEND_URL}/destruct/${data.id}`
+        );
+        setIsCopied(true);
         form.reset();
         setNewNoteFormOpen(false);
         notesQuery.refetch();
@@ -204,6 +221,20 @@ const Home = () => {
           </div>
         )}
       </div>
+
+      <AlertDialog open={isCopied} onOpenChange={setIsCopied}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Note has been created!</AlertDialogTitle>
+            <AlertDialogDescription>
+              The link has been copied to your clipboard, You can now share it.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>OK</AlertDialogCancel>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </motion.div>
   );
 };

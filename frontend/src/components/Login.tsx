@@ -19,8 +19,8 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "@/contexts/AuthContext";
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
-  password: z.string().min(2).max(50),
+  username: z.string().min(2).max(100),
+  password: z.string().min(2).max(100),
 });
 
 const Login = () => {
