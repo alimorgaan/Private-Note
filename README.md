@@ -27,7 +27,7 @@ its a simple service allow you to create a note that will automaticly be deleted
 3 - Add .env file with the following content
 
 ```bash
-DATABASE_URL="YOUR_DATABASE_URL"
+DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE"
 PORT="PORT_FOR_BACKEND"
 SECRET_KEY="SECRET_KEY_FOR_JWT"
 ```
